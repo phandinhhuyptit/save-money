@@ -16,6 +16,7 @@ const commonConfig = require('./webpack.common.js');
 // };
 
 module.exports = ({ env, addon }) => {
+  console.log(env);
   const envConfig = require(`./webpack.${env}.js`);
 
   return merge(commonConfig, envConfig);
