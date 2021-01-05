@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 const App = () => {
   return (
     <div>
@@ -8,4 +8,3 @@ const App = () => {
 };
 
 export default App;
-z
