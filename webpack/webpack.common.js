@@ -24,6 +24,45 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+          // {
+          //   loader: 'css-loader',
+          //   options: {
+          //     importLoaders: 1,
+          //     modules: true
+          //   }
+          // }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+      // {
+      //   test: /\.less$/,
+      //   use: [
+      //     'style-loader',
+      //     { loader: 'css-loader', options: { importLoaders: 1 } },
+      //     {
+      //       loader: 'less-loader',
+      //       options: { javascriptEnabled: true, modifyVars: themeVariables }
+      //     }
+      //   ]
+      // },
+      {
         test: /\.svg$/,
         use: [
           {
@@ -34,21 +73,17 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true
-            }
-          }
-        ]
       }
     ]
+  },
+  resolve: {
+    alias: {
+      GRAPH: path.resolve(__dirname, '..', './src/graphql'),
+      SRC: path.resolve(__dirname, '..', './src'),
+      PAGE: path.resolve(__dirname, '..', './src/components'),
+      STYLE: path.resolve(__dirname, '..', './src/style')
+    },
+    extensions: ['*', '.js', '.jsx']
   },
   plugins: [
     new CleanWebpackPlugin(),

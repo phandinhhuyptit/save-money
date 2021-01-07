@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App.js';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import 'SRC/style/global.js';
 // import { setContext } from 'apollo-link-context';
 // import { I18nextProvider } from 'react-i18next';
 import { cache } from './cache';

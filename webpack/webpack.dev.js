@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   mode: 'development',

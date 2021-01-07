@@ -1,10 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
+  mode: {
+
+  }
   plugins: [
+    new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       ReactDOM: 'react-dom',
@@ -14,10 +20,14 @@ module.exports = {
       path: path.resolve(__dirname, '..', './.env.development')
     })
   ],
-  devServer: {
-    contentBase: path.resolve(__dirname, '..', './dist'),
-    historyApiFallback: true,
-    hot: true
-  },
-  devtool: 'eval-source-map'
+  optimization: {
+    minimize: true,
+    minimizer: [
+       //optimize css
+      new OptimizeCssAssetsWebpackPlugin(),
+      //optimize js
+      new TerserPlugin(),
+    ]
+  }
+  // devtool: 'eval-source-map'
 };
